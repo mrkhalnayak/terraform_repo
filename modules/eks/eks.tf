@@ -100,8 +100,8 @@ module "irsa-ebs-csi" {
   oidc_fully_qualified_subjects = ["system:serviceaccount:kube-system:ebs-csi-controller-sa"]
 }
 
-resource "aws_eks_addon" "example" {
-  cluster_name                = aws_eks_cluster.example.name
+resource "aws_eks_addon" "vpc-addon" {
+  cluster_name                = var.cluster-name.vpc-addon.name
   addon_name                  = "vpc-cni"
   addon_version               = "v1.18.2-eksbuild.1" #e.g., previous version v1.9.3-eksbuild.3 and the new version is v1.10.1-eksbuild.1
   resolve_conflicts_on_update = "PRESERVE"
